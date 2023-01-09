@@ -76,5 +76,10 @@ namespace Sims3ConfigMaker
         {
 
         }
+
+        private void gpMemoryLimitUsage_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
