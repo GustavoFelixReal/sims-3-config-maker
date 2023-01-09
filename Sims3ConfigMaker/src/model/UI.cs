@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Sims3ConfigMaker
 {
-    class Class1
+    public class UI
     {
+
     }
 }

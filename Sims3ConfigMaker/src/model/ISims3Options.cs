@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Sims3ConfigMaker.src.model
 {
-    class Sims3Init
+    public interface ISims3Options
     {
 
+        string ReadOptions();
 
-
+        string ReadProperty(string propertyName);
     }
 }
