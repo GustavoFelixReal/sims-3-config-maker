@@ -9,12 +9,14 @@ namespace Sims3ConfigMaker.src.model
 {
     public class Sims3Init : ISims3Options
     {
-        private string filePath;
+        private string binPath;
+        private string filename;
         public string fileContent;
 
         public Sims3Init()
         {
-            filePath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Sims 3\\Game\\Bin\\Sims3.ini";
+            binPath = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\The Sims 3\\Game\\Bin\\";
+            filename = "Sims3.ini";
             fileContent = ReadOptions();
         }
 
@@ -22,7 +24,7 @@ namespace Sims3ConfigMaker.src.model
         {
             StringBuilder fileContent = new StringBuilder();
 
-            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(binPath + filename, FileMode.Open, FileAccess.Read))
             {
                 byte[] b = new byte[1024];
                 UTF8Encoding temp = new UTF8Encoding(true);
@@ -47,9 +49,9 @@ namespace Sims3ConfigMaker.src.model
                     StringSplitOptions.None
                 );
 
-            for (int i = 0; i < lines.Length; i++)
+            foreach (string line in lines)
             {
-                string[] property = lines[i].Split('=');
+                string[] property = line.Split('=');
 
                 if (property[0].Trim() == propertyName)
                 {
@@ -58,6 +60,21 @@ namespace Sims3ConfigMaker.src.model
             }
 
             return propertyValue;
+        }
+
+        public void Backup()
+        {
+            string filenameBackup = "Sims3_BACKUP.ini";
+
+
+            using (FileStream fs = File.Create(binPath + filenameBackup))
+            {
+                UTF8Encoding temp = new UTF8Encoding(true);
+
+                fs.Write(temp.GetBytes(fileContent), 0, temp.GetByteCount(fileContent));
+
+                fs.Close();
+            }
         }
     }
 }

@@ -12,5 +12,7 @@ namespace Sims3ConfigMaker.src.model
         string ReadOptions();
 
         string ReadProperty(string propertyName);
+
+        void Backup();
     }
 }

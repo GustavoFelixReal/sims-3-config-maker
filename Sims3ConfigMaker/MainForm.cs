@@ -18,34 +18,61 @@ namespace Sims3ConfigMaker
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             Sims3Init sims3Init = new Sims3Init();
+            SystemInfo sysInfo = new SystemInfo();
+
+            StringBuilder dynamicAvoidance = new StringBuilder();
+
+            sims3Init.Backup();
 
             numMemoryLimit.Value = Decimal.Parse(sims3Init.ReadProperty("MemoryUsageLimit"));
 
-            Console.WriteLine(sims3Init.fileContent);
+            dynamicAvoidance.Append("DynamicAvoidance_FieldRadius: " + sims3Init.ReadProperty("DynamicAvoidance_FieldRadius") + "\n");
+            dynamicAvoidance.Append("DynamicAvoidance_InactiveFieldLength: " + sims3Init.ReadProperty("DynamicAvoidance_InactiveFieldLength") + "\n");
+            dynamicAvoidance.Append("DynamicAvoidance_MinNonIntersectingDistance: " + sims3Init.ReadProperty("DynamicAvoidance_MinNonIntersectingDistance") + "\n");
+            dynamicAvoidance.Append("DynamicAvoidance_FieldLengthPad: " + sims3Init.ReadProperty("DynamicAvoidance_FieldLengthPad") + "\n");
+            dynamicAvoidance.Append("DynamicAvoidance_StopDistanceMultiplier: " + sims3Init.ReadProperty("DynamicAvoidance_StopDistanceMultiplier") + "\n");
 
-            lblLoad.Text = sims3Init.fileContent;
+            // Console.WriteLine(sims3Init.fileContent);
 
-        }
+            richTextBox1.Text = sims3Init.fileContent;
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
+            sysInfo.ReadGPUInfo();
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

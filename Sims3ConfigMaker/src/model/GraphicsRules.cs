@@ -8,6 +8,11 @@ namespace Sims3ConfigMaker.src.model
 {
     class GraphicsRules : ISims3Options
     {
+        public void Backup()
+        {
+            throw new NotImplementedException();
+        }
+
         public string ReadOptions()
         {
             throw new NotImplementedException();
